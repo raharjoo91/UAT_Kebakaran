@@ -6,95 +6,47 @@
     <title>Kuesioner UAT - Modul Fire Safety</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f0f4f8; color: #1a202c; line-height: 1.6; padding: 20px;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f4f8; color: #1a202c; line-height: 1.6; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }
-        .header {
-            background: linear-gradient(135deg, #e53e3e, #c53030);
-            color: white; padding: 30px; border-radius: 12px 12px 0 0; text-align: center;
-        }
+        .header { background: linear-gradient(135deg, #e53e3e, #c53030); color: white; padding: 30px; border-radius: 12px 12px 0 0; text-align: center; }
         .header h1 { font-size: 1.5em; margin-bottom: 8px; }
-        .header p { opacity: 0.9; font-size: 0.95em; }
         .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px; overflow: hidden; }
         .card-body { padding: 24px; }
         .card h2 { font-size: 1.15em; color: #2d3748; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
         .card h2 span { background: #e53e3e; color: white; font-size: 0.7em; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
-
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #4a5568; font-size: 0.95em; }
-        .form-group select, .form-group textarea {
-            width: 100%; padding: 10px 14px; border: 2px solid #e2e8f0; border-radius: 8px;
-            font-size: 1em; background: white; transition: border-color 0.2s;
-        }
-        .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: #e53e3e;
-        }
+        .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1em; background: white; }
+        .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #e53e3e; }
         .form-group textarea { resize: vertical; min-height: 80px; }
-
         .radio-group { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }
-        .radio-item {
-            flex: 1; text-align: center; border: 2px solid #e2e8f0; border-radius: 8px;
-            padding: 10px 4px; cursor: pointer; transition: all 0.2s; user-select: none;
-        }
+        .radio-item { flex: 1; text-align: center; border: 2px solid #e2e8f0; border-radius: 8px; padding: 10px 4px; cursor: pointer; user-select: none; }
         .radio-item:hover { border-color: #fc8181; background: #fff5f5; }
         .radio-item input { display: none; }
         .radio-item.active { border-color: #e53e3e; background: #fff5f5; }
         .radio-item .num { font-size: 1.2em; font-weight: 700; color: #e53e3e; }
         .radio-item .lbl { font-size: 0.7em; color: #718096; margin-top: 2px; }
-
-        .question-item {
-            padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px;
-            transition: background 0.2s;
-        }
-        .question-item:hover { background: #f7fafc; }
+        .question-item { padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; }
         .question-item .q-text { font-weight: 500; font-size: 0.95em; margin-bottom: 4px; }
         .question-item .q-num { color: #e53e3e; font-weight: 700; margin-right: 4px; }
-
-        .btn-submit {
-            width: 100%; padding: 16px; background: linear-gradient(135deg, #e53e3e, #c53030);
-            color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 700;
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-        }
+        .btn-submit { width: 100%; padding: 16px; background: linear-gradient(135deg, #e53e3e, #c53030); color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 700; cursor: pointer; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(229,62,62,0.4); }
-        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-        .alert {
-            padding: 16px; border-radius: 8px; margin-bottom: 16px; display: none;
-        }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .alert { padding: 16px; border-radius: 8px; margin-bottom: 16px; display: none; }
         .alert.success { background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4; display: block; }
         .alert.error { background: #fed7d7; color: #742a2a; border: 1px solid #feb2b2; display: block; }
-
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
         .modal-overlay.show { display: flex; }
-        .modal {
-            background: white; border-radius: 12px; padding: 32px; max-width: 480px;
-            width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: slideUp 0.3s ease;
-        }
+        .modal { background: white; border-radius: 12px; padding: 32px; max-width: 480px; width: 90%; text-align: center; animation: slideUp 0.3s ease; }
         .modal .icon { font-size: 3em; margin-bottom: 12px; }
         .modal h3 { color: #22543d; margin-bottom: 8px; }
-        .modal p { color: #4a5568; font-size: 0.95em; margin-bottom: 20px; }
-        .modal .btn-close {
-            padding: 10px 32px; background: #e53e3e; color: white; border: none;
-            border-radius: 8px; cursor: pointer; font-weight: 600;
-        }
+        .modal .btn-close { padding: 10px 32px; background: #e53e3e; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
         .loading { text-align: center; padding: 40px; color: #718096; }
-        .spinner { display: inline-block; width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top-color: #e53e3e; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
+        .spinner { display: inline-block; width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top-color: #e53e3e; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        .guide-box {
-            background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 8px; padding: 16px; margin-bottom: 16px; font-size: 0.9em; color: #2a4365;
-        }
-
+        .guide-box { background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 8px; padding: 16px; margin-bottom: 16px; font-size: 0.9em; color: #2a4365; }
         .section-desc { font-size: 0.85em; color: #718096; margin-bottom: 12px; font-style: italic; }
-
         @media (max-width: 600px) { .radio-group { flex-wrap: wrap; } .radio-item { min-width: 60px; } }
     </style>
 </head>
@@ -108,7 +60,6 @@
                 URL: <a href="https://fire-safety-module.vercel.app" target="_blank" style="color:white;text-decoration:underline;">https://fire-safety-module.vercel.app</a>
             </p>
         </div>
-
         <div class="card-body">
             <div class="guide-box">
                 <strong>Instruksi:</strong> Kamu baru saja mencoba modul pembelajaran kebakaran (4 Misi).
@@ -117,13 +68,12 @@
                 <strong>Skala Jawaban:</strong><br>
                 1 = Sangat Tidak Setuju | 2 = Tidak Setuju | 3 = Netral | 4 = Setuju | 5 = Sangat Setuju
             </div>
-
             <div id="alert-area"></div>
 
             <form id="uatForm">
-                <!-- SECTION A: IDENTITAS -->
-                <h2>A. Identitas Responden</h2>
 
+                <!-- ============ A. IDENTITAS ============ -->
+                <h2>A. Identitas Responden</h2>
                 <div class="form-group">
                     <label>1. Kelas</label>
                     <select name="kelas" required>
@@ -133,7 +83,6 @@
                         <option value="9">9</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label>2. Jenis Kelamin</label>
                     <select name="jenis_kelamin" required>
@@ -142,7 +91,6 @@
                         <option value="Perempuan">Perempuan</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label>3. Apakah kamu pernah mengikuti simulasi kebakaran/sosialisasi keselamatan kebakaran sebelumnya?</label>
                     <select name="pengalaman_simulasi" required>
@@ -152,44 +100,291 @@
                     </select>
                 </div>
 
-                <!-- SECTION B: SYSTEM QUALITY -->
-                <h2>B. Kualitas & Keandalan Sistem <span>System Quality</span></h2>
+                <!-- ============ B. SYSTEM QUALITY ============ -->
+                <h2>B. Kualitas &amp; Keandalan Sistem <span>System Quality</span></h2>
                 <div class="section-desc">Penilaian terhadap fungsionalitas, performa, dan keandalan sistem secara teknis</div>
-                <div id="sectionB"></div>
 
-                <!-- SECTION C: EASE OF USE -->
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">B1.</span> Modul pembelajaran ini berjalan lancar tanpa error atau gangguan teknis yang berarti</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="B1" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B1" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B1" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="B1" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B1" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">B2.</span> Semua fitur interaktif (klik kartu, mencari bahaya di gambar, kuis, drag-and-drop) berfungsi dengan baik</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="B2" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B2" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B2" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="B2" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B2" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">B3.</span> Suara alarm pada Misi 2 terdengar jelas dan simulasi evakuasi berfungsi seperti yang diharapkan</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="B3" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B3" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B3" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="B3" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B3" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">B4.</span> Timer mundur pada kuis Misi 4 berfungsi dengan baik dan waktu yang diberikan cukup untuk menjawab</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="B4" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B4" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B4" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="B4" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B4" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">B5.</span> Sistem XP, level, dan badge (lencana) berjalan sesuai harapan dan memotivasi saya</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="B5" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B5" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B5" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="B5" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="B5" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+
+                <!-- ============ C. EASE OF USE ============ -->
                 <h2>C. Kemudahan Penggunaan <span>Ease of Use</span></h2>
                 <div class="section-desc">Penilaian terhadap seberapa mudah kamu mempelajari dan menggunakan modul ini</div>
-                <div id="sectionC"></div>
 
-                <!-- SECTION D: INFORMATION QUALITY -->
-                <h2>D. Kualitas Informasi & Materi <span>Information Quality</span></h2>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">C1.</span> Saya dapat dengan mudah memulai dan menyelesaikan setiap misi tanpa kesulitan</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="C1" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C1" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C1" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="C1" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C1" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">C2.</span> Saya tidak perlu bertanya pada orang lain untuk bisa menggunakan modul ini</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="C2" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C2" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C2" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="C2" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C2" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">C3.</span> Saya cepat terbiasa dan mahir dalam menggunakan modul pembelajaran ini</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="C3" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C3" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C3" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="C3" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C3" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">C4.</span> Petunjuk dan arahan dalam setiap misi jelas sehingga saya tahu apa yang harus dilakukan</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="C4" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C4" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C4" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="C4" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C4" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">C5.</span> Secara keseluruhan, modul ini mudah digunakan (user-friendly)</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="C5" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C5" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C5" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="C5" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="C5" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+
+                <!-- ============ D. INFORMATION QUALITY ============ -->
+                <h2>D. Kualitas Informasi &amp; Materi <span>Information Quality</span></h2>
                 <div class="section-desc">Penilaian terhadap kejelasan, kegunaan, dan kelengkapan materi pembelajaran</div>
-                <div id="sectionD"></div>
 
-                <!-- SECTION E: INTERFACE QUALITY -->
-                <h2>E. Kualitas Antarmuka & Desain <span>Interface Quality</span></h2>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">D1.</span> Materi tentang penyebab kebakaran (Misi 1: segitiga api, kartu penyebab) mudah dipahami dan jelas</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="D1" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D1" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D1" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="D1" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D1" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">D2.</span> Simulasi alarm dan petunjuk evakuasi (Misi 2) memberikan informasi yang berguna tentang cara evakuasi yang aman</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="D2" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D2" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D2" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="D2" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D2" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">D3.</span> Materi tentang risiko listrik dan pengisian baterai (Misi 3) sangat berguna untuk kehidupan sehari-hari saya</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="D3" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D3" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D3" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="D3" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D3" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">D4.</span> Soal-soal kuis (Misi 4) sesuai dengan materi yang sudah dipelajari di Misi 1-3</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="D4" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D4" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D4" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="D4" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D4" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">D5.</span> Bahasa dan istilah yang digunakan mudah dimengerti oleh siswa SMP</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="D5" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D5" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D5" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="D5" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="D5" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+
+                <!-- ============ E. INTERFACE QUALITY ============ -->
+                <h2>E. Kualitas Antarmuka &amp; Desain <span>Interface Quality</span></h2>
                 <div class="section-desc">Penilaian terhadap tampilan, navigasi, dan kenyamanan visual</div>
-                <div id="sectionE"></div>
 
-                <!-- SECTION F: SATISFACTION & ACCEPTANCE -->
-                <h2>F. Kepuasan & Penerimaan <span>Satisfaction &amp; Acceptance</span></h2>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">E1.</span> Tampilan modul ini menarik secara visual dan membuat saya ingin terus menggunakannya</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="E1" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E1" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E1" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="E1" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E1" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">E2.</span> Peta misi (Mission Map) di halaman utama mudah dipahami dan membantu saya melihat progres belajar</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="E2" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E2" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E2" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="E2" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E2" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">E3.</span> Gambar dan ilustrasi membantu saya memahami materi dengan lebih baik</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="E3" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E3" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E3" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="E3" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E3" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">E4.</span> Tombol-tombol dan menu jelas sehingga saya tahu apa yang harus saya tekan</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="E4" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E4" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E4" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="E4" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E4" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">E5.</span> Modul ini nyaman digunakan, baik di HP (smartphone) maupun di laptop/komputer</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="E5" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E5" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E5" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="E5" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="E5" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+
+                <!-- ============ F. SATISFACTION & ACCEPTANCE ============ -->
+                <h2>F. Kepuasan &amp; Penerimaan <span>Satisfaction &amp; Acceptance</span></h2>
                 <div class="section-desc">Penilaian terhadap pengalaman keseluruhan, niat penggunaan, dan penerimaan sistem</div>
-                <div id="sectionF"></div>
 
-                <!-- SECTION G: OPEN FEEDBACK -->
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">F1.</span> Saya merasa senang dan termotivasi saat menggunakan modul pembelajaran ini</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="F1" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F1" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F1" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="F1" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F1" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">F2.</span> Elemen permainan (XP, badge, level, safety meter) membuat belajar keselamatan kebakaran jadi lebih seru dan menyenangkan</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="F2" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F2" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F2" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="F2" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F2" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">F3.</span> Setelah menggunakan modul ini, saya merasa lebih paham dan siap menghadapi situasi kebakaran di sekolah maupun di rumah</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="F3" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F3" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F3" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="F3" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F3" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">F4.</span> Saya akan merekomendasikan modul ini kepada teman-teman saya agar mereka juga belajar tentang keselamatan kebakaran</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="F4" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F4" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F4" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="F4" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F4" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+                <div class="question-item">
+                    <div class="q-text"><span class="q-num">F5.</span> Secara keseluruhan, saya menerima dan puas dengan modul pembelajaran ini sebagai alat bantu belajar</div>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="F5" value="1" required><div class="num">1</div><div class="lbl">Sangat Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F5" value="2"><div class="num">2</div><div class="lbl">Tidak Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F5" value="3"><div class="num">3</div><div class="lbl">Netral</div></label>
+                        <label class="radio-item"><input type="radio" name="F5" value="4"><div class="num">4</div><div class="lbl">Setuju</div></label>
+                        <label class="radio-item"><input type="radio" name="F5" value="5"><div class="num">5</div><div class="lbl">Sangat Setuju</div></label>
+                    </div>
+                </div>
+
+                <!-- ============ G. OPEN FEEDBACK ============ -->
                 <h2>G. Umpan Balik Terbuka</h2>
-
                 <div class="form-group">
                     <label>G1. Apa fitur yang paling kamu sukai dari modul ini? (misal: mencari bahaya di gambar, simulasi alarm, kuis, badge, peta misi)</label>
                     <textarea name="G1" rows="3"></textarea>
                 </div>
-
                 <div class="form-group">
                     <label>G2. Apa yang perlu diperbaiki atau ditambahkan dari modul ini?</label>
                     <textarea name="G2" rows="3"></textarea>
                 </div>
-
                 <div class="form-group">
                     <label>G3. Adakah saran lain untuk membuat modul ini lebih baik?</label>
                     <textarea name="G3" rows="3"></textarea>
@@ -197,9 +392,7 @@
 
                 <button type="submit" class="btn-submit" id="btnSubmit">Kirim Kuesioner</button>
             </form>
-            <p style="text-align:center;margin-top:12px;font-size:0.8em;color:#a0aec0;">
-                Terima kasih atas partisipasimu!
-            </p>
+            <p style="text-align:center;margin-top:12px;font-size:0.8em;color:#a0aec0;">Terima kasih atas partisipasimu!</p>
         </div>
     </div>
 </div>
@@ -224,90 +417,29 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
     // ===== KONFIGURASI SUPABASE =====
-    const SUPABASE_URL = 'https://awzdscgaxngwefhgbmhy.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3emRzY2dheG5nd2VmaGdibWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MjgwOTMsImV4cCI6MjA5NzIwNDA5M30.Yx1p26R6KH4kY3ofD93RKlsvu9ZGc-S2YQPSbTkzKIg';
+    var SUPABASE_URL = 'https://awzdscgaxngwefhgbmhy.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3emRzY2dheG5nd2VmaGdibWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MjgwOTMsImV4cCI6MjA5NzIwNDA5M30.Yx1p26R6KH4kY3ofD93RKlsvu9ZGc-S2YQPSbTkzKIg';
 
-    let supabase = null;
-    if (SUPABASE_URL && SUPABASE_ANON_KEY) {
-        supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Load Supabase CDN
+    function initSupabase() {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+        s.onload = function() { window._supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); };
+        document.head.appendChild(s);
     }
+    initSupabase();
 
-    // Data pertanyaan — 5 dimensi UAT
-    const questions = {
-        B: [ // System Quality
-            'Modul pembelajaran ini berjalan lancar tanpa error atau gangguan teknis yang berarti',
-            'Semua fitur interaktif (klik kartu, mencari bahaya di gambar, kuis, drag-and-drop) berfungsi dengan baik',
-            'Suara alarm pada Misi 2 terdengar jelas dan simulasi evakuasi berfungsi seperti yang diharapkan',
-            'Timer mundur pada kuis Misi 4 berfungsi dengan baik dan waktu yang diberikan cukup untuk menjawab',
-            'Sistem XP, level, dan badge (lencana) berjalan sesuai harapan dan memotivasi saya'
-        ],
-        C: [ // Ease of Use
-            'Saya dapat dengan mudah memulai dan menyelesaikan setiap misi tanpa kesulitan',
-            'Saya tidak perlu bertanya pada orang lain untuk bisa menggunakan modul ini',
-            'Saya cepat terbiasa dan mahir dalam menggunakan modul pembelajaran ini',
-            'Petunjuk dan arahan dalam setiap misi jelas sehingga saya tahu apa yang harus dilakukan',
-            'Secara keseluruhan, modul ini mudah digunakan (user-friendly)'
-        ],
-        D: [ // Information Quality
-            'Materi tentang penyebab kebakaran (Misi 1: segitiga api, kartu penyebab) mudah dipahami dan jelas',
-            'Simulasi alarm dan petunjuk evakuasi (Misi 2) memberikan informasi yang berguna tentang cara evakuasi yang aman',
-            'Materi tentang risiko listrik dan pengisian baterai (Misi 3) sangat berguna untuk kehidupan sehari-hari saya',
-            'Soal-soal kuis (Misi 4) sesuai dengan materi yang sudah dipelajari di Misi 1-3',
-            'Bahasa dan istilah yang digunakan mudah dimengerti oleh siswa SMP'
-        ],
-        E: [ // Interface Quality
-            'Tampilan modul ini menarik secara visual dan membuat saya ingin terus menggunakannya',
-            'Peta misi (Mission Map) di halaman utama mudah dipahami dan membantu saya melihat progres belajar',
-            'Gambar dan ilustrasi membantu saya memahami materi dengan lebih baik',
-            'Tombol-tombol dan menu jelas sehingga saya tahu apa yang harus saya tekan',
-            'Modul ini nyaman digunakan, baik di HP (smartphone) maupun di laptop/komputer'
-        ],
-        F: [ // Satisfaction & Acceptance
-            'Saya merasa senang dan termotivasi saat menggunakan modul pembelajaran ini',
-            'Elemen permainan (XP, badge, level, safety meter) membuat belajar keselamatan kebakaran jadi lebih seru dan menyenangkan',
-            'Setelah menggunakan modul ini, saya merasa lebih paham dan siap menghadapi situasi kebakaran di sekolah maupun di rumah',
-            'Saya akan merekomendasikan modul ini kepada teman-teman saya agar mereka juga belajar tentang keselamatan kebakaran',
-            'Secara keseluruhan, saya menerima dan puas dengan modul pembelajaran ini sebagai alat bantu belajar'
-        ]
-    };
-
-    const labels = ['Sangat Tidak Setuju', 'Tidak Setuju', 'Netral', 'Setuju', 'Sangat Setuju'];
-
-    function renderQuestions() {
-        Object.keys(questions).forEach(section => {
-            const container = document.getElementById('section' + section);
-            if (!container) return;
-            questions[section].forEach((q, idx) => {
-                const num = section + (idx + 1);
-                const div = document.createElement('div');
-                div.className = 'question-item';
-                div.innerHTML = `
-                    <div class="q-text"><span class="q-num">${num}.</span> ${q}</div>
-                    <div class="radio-group" data-section="${section}" data-idx="${idx}" data-num="${num}">
-                        ${[1,2,3,4,5].map(v => `
-                            <label class="radio-item">
-                                <input type="radio" name="${num}" value="${v}" required>
-                                <div class="num">${v}</div>
-                                <div class="lbl">${labels[v-1]}</div>
-                            </label>
-                        `).join('')}
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-        });
-    }
-    renderQuestions();
+    function getSupabase() { return window._supabase; }
 
     // Radio toggle visual
-    document.querySelectorAll('.radio-group').forEach(group => {
-        group.querySelectorAll('input').forEach(input => {
+    document.querySelectorAll('.radio-group').forEach(function(group) {
+        var inputs = group.querySelectorAll('input');
+        inputs.forEach(function(input) {
             input.addEventListener('change', function() {
-                const parent = this.closest('.radio-group');
-                parent.querySelectorAll('.radio-item').forEach(item => item.classList.remove('active'));
+                var parent = this.closest('.radio-group');
+                parent.querySelectorAll('.radio-item').forEach(function(item) { item.classList.remove('active'); });
                 this.closest('.radio-item').classList.add('active');
             });
         });
@@ -317,39 +449,30 @@
     document.getElementById('uatForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        var supabase = getSupabase();
         if (!supabase) {
-            showAlert('error', 'Supabase belum dikonfigurasi. Hubungi administrator.');
+            showAlert('error', 'Supabase sedang dimuat. Tunggu beberapa detik dan coba lagi.');
             return;
         }
 
-        const formData = new FormData(this);
-
-        const data = {
+        var formData = new FormData(this);
+        var data = {
             kelas: formData.get('kelas'),
             jenis_kelamin: formData.get('jenis_kelamin'),
             pengalaman_simulasi: formData.get('pengalaman_simulasi'),
-            G1: formData.get('G1') || '',
-            G2: formData.get('G2') || '',
-            G3: formData.get('G3') || ''
+            B1: parseInt(formData.get('B1')), B2: parseInt(formData.get('B2')), B3: parseInt(formData.get('B3')), B4: parseInt(formData.get('B4')), B5: parseInt(formData.get('B5')),
+            C1: parseInt(formData.get('C1')), C2: parseInt(formData.get('C2')), C3: parseInt(formData.get('C3')), C4: parseInt(formData.get('C4')), C5: parseInt(formData.get('C5')),
+            D1: parseInt(formData.get('D1')), D2: parseInt(formData.get('D2')), D3: parseInt(formData.get('D3')), D4: parseInt(formData.get('D4')), D5: parseInt(formData.get('D5')),
+            E1: parseInt(formData.get('E1')), E2: parseInt(formData.get('E2')), E3: parseInt(formData.get('E3')), E4: parseInt(formData.get('E4')), E5: parseInt(formData.get('E5')),
+            F1: parseInt(formData.get('F1')), F2: parseInt(formData.get('F2')), F3: parseInt(formData.get('F3')), F4: parseInt(formData.get('F4')), F5: parseInt(formData.get('F5')),
+            G1: formData.get('G1') || '', G2: formData.get('G2') || '', G3: formData.get('G3') || ''
         };
 
-        Object.keys(questions).forEach(section => {
-            questions[section].forEach((_, idx) => {
-                const num = section + (idx + 1);
-                data[num] = parseInt(formData.get(num)) || null;
-            });
-        });
-
-        // Validasi semua pertanyaan terisi
-        let missing = [];
-        Object.keys(questions).forEach(section => {
-            questions[section].forEach((_, idx) => {
-                const num = section + (idx + 1);
-                if (data[num] === null) missing.push(num);
-            });
-        });
+        // Validasi
+        var required = ['B1','B2','B3','B4','B5','C1','C2','C3','C4','C5','D1','D2','D3','D4','D5','E1','E2','E3','E4','E5','F1','F2','F3','F4','F5'];
+        var missing = required.filter(function(k) { return !data[k] || isNaN(data[k]); });
         if (missing.length > 0) {
-            showAlert('error', `Mohon jawab semua pertanyaan (belum: ${missing.join(', ')})`);
+            showAlert('error', 'Mohon jawab semua pertanyaan (belum: ' + missing.join(', ') + ')');
             return;
         }
 
@@ -357,8 +480,8 @@
         document.getElementById('btnSubmit').disabled = true;
 
         try {
-            const { error } = await supabase.from('uat_responses').insert([data]);
-            if (error) throw error;
+            var result = await supabase.from('uat_responses').insert([data]);
+            if (result.error) throw result.error;
             document.getElementById('loadingModal').classList.remove('show');
             document.getElementById('successModal').classList.add('show');
         } catch (err) {
@@ -369,9 +492,9 @@
     });
 
     function showAlert(type, msg) {
-        const area = document.getElementById('alert-area');
-        area.innerHTML = `<div class="alert ${type}">${msg}</div>`;
-        setTimeout(() => area.innerHTML = '', 5000);
+        var area = document.getElementById('alert-area');
+        area.innerHTML = '<div class="alert ' + type + '">' + msg + '</div>';
+        setTimeout(function() { area.innerHTML = ''; }, 5000);
     }
 </script>
 </body>
