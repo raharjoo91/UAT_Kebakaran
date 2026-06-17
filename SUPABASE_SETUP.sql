@@ -42,6 +42,9 @@ CREATE TABLE uat_responses (
 -- Aktifkan Row Level Security (boleh public insert)
 ALTER TABLE uat_responses ENABLE ROW LEVEL SECURITY;
 
+-- Beri izin dasar INSERT untuk role anon (wajib untuk RLS)
+GRANT INSERT ON public.uat_responses TO anon;
+
 -- Policy: siapa pun boleh insert (untuk kuesioner)
 CREATE POLICY "public_insert_uat" ON uat_responses
     FOR INSERT TO anon
