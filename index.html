@@ -444,16 +444,16 @@
             kelas: formData.get('kelas'),
             jenis_kelamin: formData.get('jenis_kelamin'),
             pengalaman_simulasi: formData.get('pengalaman_simulasi'),
-            B1: parseInt(formData.get('B1')), B2: parseInt(formData.get('B2')), B3: parseInt(formData.get('B3')), B4: parseInt(formData.get('B4')), B5: parseInt(formData.get('B5')),
-            C1: parseInt(formData.get('C1')), C2: parseInt(formData.get('C2')), C3: parseInt(formData.get('C3')), C4: parseInt(formData.get('C4')), C5: parseInt(formData.get('C5')),
-            D1: parseInt(formData.get('D1')), D2: parseInt(formData.get('D2')), D3: parseInt(formData.get('D3')), D4: parseInt(formData.get('D4')), D5: parseInt(formData.get('D5')),
-            E1: parseInt(formData.get('E1')), E2: parseInt(formData.get('E2')), E3: parseInt(formData.get('E3')), E4: parseInt(formData.get('E4')), E5: parseInt(formData.get('E5')),
-            F1: parseInt(formData.get('F1')), F2: parseInt(formData.get('F2')), F3: parseInt(formData.get('F3')), F4: parseInt(formData.get('F4')), F5: parseInt(formData.get('F5')),
-            G1: formData.get('G1') || '', G2: formData.get('G2') || '', G3: formData.get('G3') || ''
+            b1: parseInt(formData.get('B1')), b2: parseInt(formData.get('B2')), b3: parseInt(formData.get('B3')), b4: parseInt(formData.get('B4')), b5: parseInt(formData.get('B5')),
+            c1: parseInt(formData.get('C1')), c2: parseInt(formData.get('C2')), c3: parseInt(formData.get('C3')), c4: parseInt(formData.get('C4')), c5: parseInt(formData.get('C5')),
+            d1: parseInt(formData.get('D1')), d2: parseInt(formData.get('D2')), d3: parseInt(formData.get('D3')), d4: parseInt(formData.get('D4')), d5: parseInt(formData.get('D5')),
+            e1: parseInt(formData.get('E1')), e2: parseInt(formData.get('E2')), e3: parseInt(formData.get('E3')), e4: parseInt(formData.get('E4')), e5: parseInt(formData.get('E5')),
+            f1: parseInt(formData.get('F1')), f2: parseInt(formData.get('F2')), f3: parseInt(formData.get('F3')), f4: parseInt(formData.get('F4')), f5: parseInt(formData.get('F5')),
+            g1: formData.get('G1') || '', g2: formData.get('G2') || '', g3: formData.get('G3') || ''
         };
 
         // Validasi
-        var required = ['B1','B2','B3','B4','B5','C1','C2','C3','C4','C5','D1','D2','D3','D4','D5','E1','E2','E3','E4','E5','F1','F2','F3','F4','F5'];
+        var required = ['b1','b2','b3','b4','b5','c1','c2','c3','c4','c5','d1','d2','d3','d4','d5','e1','e2','e3','e4','e5','f1','f2','f3','f4','f5'];
         var missing = required.filter(function(k) { return !data[k] || isNaN(data[k]); });
         if (missing.length > 0) {
             showAlert('error', 'Mohon jawab semua pertanyaan');
