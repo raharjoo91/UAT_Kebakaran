@@ -4,6 +4,7 @@
 **Proyek:** Web-Based Gamified Fire Safety Education untuk Siswa SMP  
 **URL:** https://fire-safety-module.vercel.app  
 **Target Responden:** ~30 siswa SMP  
+**Metode:** User Acceptance Testing (UAT) — mengukur penerimaan pengguna terhadap sistem
 
 ---
 
@@ -15,7 +16,7 @@ Halo! Kamu baru saja mencoba **Modul Pembelajaran Keselamatan Kebakaran** yang t
 3. **Misi 3:** Risiko Listrik & Pengisian Baterai
 4. **Misi 4:** Misi Puncak (Kuis Final)
 
-Kami ingin mengetahui pendapatmu tentang modul ini. Jawabanmu **anonim** dan **tidak mempengaruhi nilai**. Silakan isi dengan jujur.
+Kami ingin mengetahui **penerimaan dan pendapatmu** tentang modul ini. Jawabanmu **anonim** dan **tidak mempengaruhi nilai**. Silakan isi dengan jujur.
 
 **Skala Jawaban:**
 | Angka | Keterangan |
@@ -45,81 +46,91 @@ Kami ingin mengetahui pendapatmu tentang modul ini. Jawabanmu **anonim** dan **t
 
 ---
 
-## Bagian B: Kualitas Sistem (System Quality)
+## Bagian B: Kualitas & Keandalan Sistem (System Quality)
 
-*Penilaian terhadap fungsionalitas, keandalan, dan kinerja sistem*
-
-| No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
-|----|------------|---|---|---|---|---|
-| B1 | Modul pembelajaran ini berjalan dengan lancar tanpa error atau gangguan | [ ] | [ ] | [ ] | [ ] | [ ] |
-| B2 | Semua fitur dalam modul ini berfungsi dengan baik (klik kartu, drag, kuis, dsb.) | [ ] | [ ] | [ ] | [ ] | [ ] |
-| B3 | Saya dapat menyelesaikan setiap misi tanpa kebingungan teknis | [ ] | [ ] | [ ] | [ ] | [ ] |
-| B4 | Suara alarm pada Misi 2 berfungsi dengan baik dan jelas terdengar | [ ] | [ ] | [ ] | [ ] | [ ] |
-| B5 | Permainan kuis pada Misi 4 berjalan dengan baik dan waktu mundurnya berfungsi | [ ] | [ ] | [ ] | [ ] | [ ] |
-| B6 | Sistem XP, level, dan pencapaian (badge) berjalan sesuai harapan | [ ] | [ ] | [ ] | [ ] | [ ] |
-
----
-
-## Bagian C: Kualitas Informasi (Information Quality)
-
-*Penilaian terhadap kejelasan, akurasi, dan kelengkapan materi pembelajaran*
+*Penilaian terhadap fungsionalitas, performa, dan keandalan sistem secara teknis — sejauh mana sistem berjalan dengan baik dan dapat diterima secara teknis*
 
 | No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
 |----|------------|---|---|---|---|---|
-| C1 | Materi tentang penyebab kebakaran (Misi 1) mudah saya pahami | [ ] | [ ] | [ ] | [ ] | [ ] |
-| C2 | Petunjuk evakuasi dan simulasi alarm (Misi 2) jelas dan informatif | [ ] | [ ] | [ ] | [ ] | [ ] |
-| C3 | Materi tentang risiko listrik dan pengisian baterai (Misi 3) berguna dan mudah dimengerti | [ ] | [ ] | [ ] | [ ] | [ ] |
-| C4 | Pertanyaan kuis (Misi 4) sesuai dengan materi yang sudah dipelajari | [ ] | [ ] | [ ] | [ ] | [ ] |
-| C5 | Informasi yang disajikan akurat dan dapat dipercaya | [ ] | [ ] | [ ] | [ ] | [ ] |
-| C6 | Bahasa yang digunakan mudah dipahami oleh siswa SMP | [ ] | [ ] | [ ] | [ ] | [ ] |
+| B1 | Modul pembelajaran ini berjalan lancar tanpa error atau gangguan teknis yang berarti | [ ] | [ ] | [ ] | [ ] | [ ] |
+| B2 | Semua fitur interaktif (klik kartu, mencari bahaya di gambar, kuis, drag-and-drop) berfungsi dengan baik | [ ] | [ ] | [ ] | [ ] | [ ] |
+| B3 | Suara alarm pada Misi 2 terdengar jelas dan simulasi evakuasi berfungsi seperti yang diharapkan | [ ] | [ ] | [ ] | [ ] | [ ] |
+| B4 | Timer mundur pada kuis Misi 4 berfungsi dengan baik dan waktu yang diberikan cukup untuk menjawab | [ ] | [ ] | [ ] | [ ] | [ ] |
+| B5 | Sistem XP, level, dan badge (lencana) berjalan sesuai harapan dan memotivasi saya | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ---
 
-## Bagian D: Kualitas Antarmuka (Interface Quality)
+## Bagian C: Kemudahan Penggunaan (Ease of Use)
 
-*Penilaian terhadap desain, navigasi, dan tampilan visual*
+*Penilaian terhadap seberapa mudah pengguna mempelajari dan menggunakan sistem — Effort Expectancy (UTAUT)*
 
 | No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
 |----|------------|---|---|---|---|---|
-| D1 | Tampilan modul ini menarik dan menyenangkan untuk dilihat | [ ] | [ ] | [ ] | [ ] | [ ] |
-| D2 | Saya dapat dengan mudah berpindah antar halaman dan misi | [ ] | [ ] | [ ] | [ ] | [ ] |
-| D3 | Peta misi (Mission Map) di halaman utama mudah dipahami | [ ] | [ ] | [ ] | [ ] | [ ] |
-| D4 | Tombol-tombol dan menu jelas sehingga saya tahu harus menekan apa | [ ] | [ ] | [ ] | [ ] | [ ] |
-| D5 | Gambar dan ilustrasi membantu saya memahami materi | [ ] | [ ] | [ ] | [ ] | [ ] |
-| D6 | Modul ini nyaman digunakan di HP maupun laptop | [ ] | [ ] | [ ] | [ ] | [ ] |
+| C1 | Saya dapat dengan mudah memulai dan menyelesaikan setiap misi tanpa kesulitan | [ ] | [ ] | [ ] | [ ] | [ ] |
+| C2 | Saya tidak perlu bertanya pada orang lain untuk bisa menggunakan modul ini | [ ] | [ ] | [ ] | [ ] | [ ] |
+| C3 | Saya cepat terbiasa dan mahir dalam menggunakan modul pembelajaran ini | [ ] | [ ] | [ ] | [ ] | [ ] |
+| C4 | Petunjuk dan arahan dalam setiap misi jelas sehingga saya tahu apa yang harus dilakukan | [ ] | [ ] | [ ] | [ ] | [ ] |
+| C5 | Secara keseluruhan, modul ini mudah digunakan (user-friendly) | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ---
 
-## Bagian E: Kepuasan Pengguna (User Satisfaction)
+## Bagian D: Kualitas Informasi & Materi (Information Quality)
 
-*Penilaian terhadap pengalaman keseluruhan dan niat penggunaan*
+*Penilaian terhadap kejelasan, akurasi, kegunaan, dan kelengkapan materi pembelajaran*
 
 | No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
 |----|------------|---|---|---|---|---|
-| E1 | Saya merasa senang menggunakan modul pembelajaran ini | [ ] | [ ] | [ ] | [ ] | [ ] |
-| E2 | Belajar tentang keselamatan kebakaran jadi lebih seru karena ada game, XP, dan badge | [ ] | [ ] | [ ] | [ ] | [ ] |
-| E3 | Saya lebih paham tentang cara mencegah kebakaran setelah menggunakan modul ini | [ ] | [ ] | [ ] | [ ] | [ ] |
-| E4 | Saya akan merekomendasikan modul ini ke teman-teman saya | [ ] | [ ] | [ ] | [ ] | [ ] |
-| E5 | Saya ingin belajar topik lain menggunakan modul online seperti ini | [ ] | [ ] | [ ] | [ ] | [ ] |
-| E6 | Secara keseluruhan, saya puas dengan modul pembelajaran ini | [ ] | [ ] | [ ] | [ ] | [ ] |
+| D1 | Materi tentang penyebab kebakaran (Misi 1: segitiga api, kartu penyebab) mudah dipahami dan jelas | [ ] | [ ] | [ ] | [ ] | [ ] |
+| D2 | Simulasi alarm dan petunjuk evakuasi (Misi 2) memberikan informasi yang berguna tentang cara evakuasi yang aman | [ ] | [ ] | [ ] | [ ] | [ ] |
+| D3 | Materi tentang risiko listrik dan pengisian baterai (Misi 3) sangat berguna untuk kehidupan sehari-hari saya | [ ] | [ ] | [ ] | [ ] | [ ] |
+| D4 | Soal-soal kuis (Misi 4) sesuai dengan materi yang sudah dipelajari di Misi 1-3 | [ ] | [ ] | [ ] | [ ] | [ ] |
+| D5 | Bahasa dan istilah yang digunakan mudah dimengerti oleh siswa SMP | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ---
 
-## Bagian F: Umpan Balik Terbuka
+## Bagian E: Kualitas Antarmuka & Desain Visual (Interface Quality)
 
-F1. **Apa fitur yang paling kamu sukai dari modul ini?** (misal: mencari bahaya di gambar kabel, simulasi alarm, kuis, badge, dsb.)
+*Penilaian terhadap tampilan, navigasi, estetika, dan kenyamanan visual sistem*
+
+| No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
+|----|------------|---|---|---|---|---|
+| E1 | Tampilan modul ini menarik secara visual dan membuat saya ingin terus menggunakannya | [ ] | [ ] | [ ] | [ ] | [ ] |
+| E2 | Peta misi (Mission Map) di halaman utama mudah dipahami dan membantu saya melihat progres belajar | [ ] | [ ] | [ ] | [ ] | [ ] |
+| E3 | Gambar dan ilustrasi membantu saya memahami materi dengan lebih baik | [ ] | [ ] | [ ] | [ ] | [ ] |
+| E4 | Tombol-tombol dan menu jelas sehingga saya tahu apa yang harus saya tekan | [ ] | [ ] | [ ] | [ ] | [ ] |
+| E5 | Modul ini nyaman digunakan, baik di HP (smartphone) maupun di laptop/komputer | [ ] | [ ] | [ ] | [ ] | [ ] |
+
+---
+
+## Bagian F: Kepuasan & Penerimaan (Satisfaction & Acceptance)
+
+*Penilaian terhadap pengalaman keseluruhan, niat penggunaan, dan penerimaan sistem oleh pengguna — indikator utama UAT*
+
+| No | Pernyataan | 1 | 2 | 3 | 4 | 5 |
+|----|------------|---|---|---|---|---|
+| F1 | Saya merasa senang dan termotivasi saat menggunakan modul pembelajaran ini | [ ] | [ ] | [ ] | [ ] | [ ] |
+| F2 | Elemen permainan (XP, badge, level, safety meter) membuat belajar keselamatan kebakaran jadi lebih seru dan menyenangkan | [ ] | [ ] | [ ] | [ ] | [ ] |
+| F3 | Setelah menggunakan modul ini, saya merasa lebih paham dan siap menghadapi situasi kebakaran di sekolah maupun di rumah | [ ] | [ ] | [ ] | [ ] | [ ] |
+| F4 | Saya akan merekomendasikan modul ini kepada teman-teman saya agar mereka juga belajar tentang keselamatan kebakaran | [ ] | [ ] | [ ] | [ ] | [ ] |
+| F5 | Secara keseluruhan, saya menerima dan puas dengan modul pembelajaran ini sebagai alat bantu belajar | [ ] | [ ] | [ ] | [ ] | [ ] |
+
+---
+
+## Bagian G: Umpan Balik Terbuka
+
+G1. **Apa fitur yang paling kamu sukai dari modul ini?** (misal: mencari bahaya di gambar kabel, simulasi alarm, kuis, badge, peta misi, dsb.)
 
 ```
 _____________________________________________________________________
 ```
 
-F2. **Apa yang perlu diperbaiki atau ditambahkan dari modul ini?**
+G2. **Apa yang perlu diperbaiki atau ditambahkan dari modul ini?**
 
 ```
 _____________________________________________________________________
 ```
 
-F3. **Adakah saran lain untuk membuat modul ini lebih baik?**
+G3. **Adakah saran lain untuk membuat modul ini lebih baik?**
 
 ```
 _____________________________________________________________________
@@ -127,46 +138,57 @@ _____________________________________________________________________
 
 ---
 
-> **Terima kasih banyak atas partisipasimu!** Jawabanmu sangat membantu untuk meningkatkan kualitas modul pembelajaran ini.
+> **Terima kasih banyak atas partisipasimu!** Jawabanmu sangat membantu untuk mengevaluasi penerimaan (acceptance) dan meningkatkan kualitas modul pembelajaran ini.
 
 ---
 
 ## Panduan Skoring & Analisis
 
-### Rumus Rata-rata per Aspek
+### Dimensi UAT
+
+| Dimensi | Kode Item | Jumlah Item | Fokus Pengukuran |
+|---------|-----------|-------------|------------------|
+| System Quality | B1 – B5 | 5 | Kualitas teknis, fungsionalitas, performa sistem |
+| Ease of Use | C1 – C5 | 5 | Kemudahan penggunaan, effort expectancy |
+| Information Quality | D1 – D5 | 5 | Kualitas, kejelasan, kegunaan materi |
+| Interface Quality | E1 – E5 | 5 | Desain, navigasi, estetika visual |
+| Satisfaction & Acceptance | F1 – F5 | 5 | Kepuasan, penerimaan, niat penggunaan |
+
+### Rumus Rata-rata per Dimensi
 
 $$\bar{X} = \frac{\Sigma X}{n}$$
 
 Keterangan:
-- $\bar{X}$ = Nilai rata-rata
-- $\Sigma X$ = Total skor
+- $\bar{X}$ = Nilai rata-rata dimensi
+- $\Sigma X$ = Total skor seluruh responden untuk dimensi tersebut
 - $n$ = Jumlah responden
 
 ### Rentang Skor Interpretasi UAT
 
-| Rata-rata Skor | Kategori |
-|----------------|----------|
-| 1,00 – 1,80 | Sangat Buruk |
-| 1,81 – 2,60 | Buruk |
-| 2,61 – 3,40 | Cukup / Netral |
-| 3,41 – 4,20 | Baik |
-| 4,21 – 5,00 | Sangat Baik |
+| Rata-rata Skor | Kategori | Interpretasi |
+|----------------|----------|--------------|
+| 1,00 – 1,80 | Sangat Buruk | Sistem **ditolak**, perlu perbaikan menyeluruh |
+| 1,81 – 2,60 | Buruk | Sistem **kurang diterima**, banyak aspek perlu diperbaiki |
+| 2,61 – 3,40 | Cukup / Netral | Sistem **cukup diterima**, ada ruang perbaikan |
+| 3,41 – 4,20 | Baik | Sistem **diterima dengan baik**, sedikit perbaikan |
+| 4,21 – 5,00 | Sangat Baik | Sistem **sangat diterima**, layak digunakan |
 
-### Interpretasi Berdasarkan PSSUQ Norm (Skala 1-5)
+### Interpretasi PSSUQ (Lower Score = Higher Usability)
 
-Lower score = better usability. Jika menggunakan kebalikan skala PSSUQ:
-- **SysQual (B1-B6):** Rata-rata < 2,62 = sangat baik
-- **InfoQual (C1-C6):** Rata-rata < 2,79 = sangat baik
-- **InterQual (D1-D6):** Rata-rata < 2,28 = sangat baik
-- **Overall (E1-E6):** Rata-rata < 2,62 = sangat baik
+| Skala | Mean | Batas Bawah | Batas Atas |
+|-------|------|-------------|------------|
+| SysQual (B1-B5) | 2.80 | 2.57 | 3.02 |
+| InfoQual (D1-D5) | 3.02 | 2.79 | 3.24 |
+| InterQual (E1-E5) | 2.49 | 2.28 | 2.71 |
+| Overall (B1-F5) | 2.82 | 2.62 | 3.02 |
 
-(Catatan: PSSUQ asli menggunakan skala 1-7 dengan "lower score = higher usability". Disesuaikan ke skala 1-5 dan dibalik untuk kemudahan interpretasi siswa.)
+*Catatan: Skor di bawah batas bawah = sangat baik. Skor di atas batas atas = perlu perbaikan. PSSUQ asli menggunakan skala 1-7, disesuaikan ke 1-5.*
 
 ### Matriks Tabulasi Data (Excel)
 
-| Responden | B1 | B2 | B3 | B4 | B5 | B6 | C1 | C2 | C3 | C4 | C5 | C6 | D1 | D2 | D3 | D4 | D5 | D6 | E1 | E2 | E3 | E4 | E5 | E6 |
-|-----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| R1 | | | | | | | | | | | | | | | | | | | | | | | | |
-| R2 | | | | | | | | | | | | | | | | | | | | | | | | |
-| ... | | | | | | | | | | | | | | | | | | | | | | | | |
-| **Rata-rata** | | | | | | | | | | | | | | | | | | | | | | | | |
+| Resp | B1 | B2 | B3 | B4 | B5 | C1 | C2 | C3 | C4 | C5 | D1 | D2 | D3 | D4 | D5 | E1 | E2 | E3 | E4 | E5 | F1 | F2 | F3 | F4 | F5 |
+|------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| R1 | | | | | | | | | | | | | | | | | | | | | | | | | |
+| R2 | | | | | | | | | | | | | | | | | | | | | | | | | |
+| ... | | | | | | | | | | | | | | | | | | | | | | | | | |
+| **Rata-rata** | | | | | | | | | | | | | | | | | | | | | | | | | |

@@ -92,7 +92,9 @@
         .guide-box {
             background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 8px; padding: 16px; margin-bottom: 16px; font-size: 0.9em; color: #2a4365;
         }
-        .guide-box code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+
+        .section-desc { font-size: 0.85em; color: #718096; margin-bottom: 12px; font-style: italic; }
+
         @media (max-width: 600px) { .radio-group { flex-wrap: wrap; } .radio-item { min-width: 60px; } }
     </style>
 </head>
@@ -151,37 +153,46 @@
                 </div>
 
                 <!-- SECTION B: SYSTEM QUALITY -->
-                <h2>B. Kualitas Sistem <span>System Quality</span></h2>
+                <h2>B. Kualitas & Keandalan Sistem <span>System Quality</span></h2>
+                <div class="section-desc">Penilaian terhadap fungsionalitas, performa, dan keandalan sistem secara teknis</div>
                 <div id="sectionB"></div>
 
-                <!-- SECTION C: INFORMATION QUALITY -->
-                <h2>C. Kualitas Informasi <span>Information Quality</span></h2>
+                <!-- SECTION C: EASE OF USE -->
+                <h2>C. Kemudahan Penggunaan <span>Ease of Use</span></h2>
+                <div class="section-desc">Penilaian terhadap seberapa mudah kamu mempelajari dan menggunakan modul ini</div>
                 <div id="sectionC"></div>
 
-                <!-- SECTION D: INTERFACE QUALITY -->
-                <h2>D. Kualitas Antarmuka <span>Interface Quality</span></h2>
+                <!-- SECTION D: INFORMATION QUALITY -->
+                <h2>D. Kualitas Informasi & Materi <span>Information Quality</span></h2>
+                <div class="section-desc">Penilaian terhadap kejelasan, kegunaan, dan kelengkapan materi pembelajaran</div>
                 <div id="sectionD"></div>
 
-                <!-- SECTION E: USER SATISFACTION -->
-                <h2>E. Kepuasan Pengguna <span>User Satisfaction</span></h2>
+                <!-- SECTION E: INTERFACE QUALITY -->
+                <h2>E. Kualitas Antarmuka & Desain <span>Interface Quality</span></h2>
+                <div class="section-desc">Penilaian terhadap tampilan, navigasi, dan kenyamanan visual</div>
                 <div id="sectionE"></div>
 
-                <!-- SECTION F: OPEN FEEDBACK -->
-                <h2>F. Umpan Balik Terbuka</h2>
+                <!-- SECTION F: SATISFACTION & ACCEPTANCE -->
+                <h2>F. Kepuasan & Penerimaan <span>Satisfaction &amp; Acceptance</span></h2>
+                <div class="section-desc">Penilaian terhadap pengalaman keseluruhan, niat penggunaan, dan penerimaan sistem</div>
+                <div id="sectionF"></div>
+
+                <!-- SECTION G: OPEN FEEDBACK -->
+                <h2>G. Umpan Balik Terbuka</h2>
 
                 <div class="form-group">
-                    <label>F1. Apa fitur yang paling kamu sukai dari modul ini?</label>
-                    <textarea name="F1" rows="3"></textarea>
+                    <label>G1. Apa fitur yang paling kamu sukai dari modul ini? (misal: mencari bahaya di gambar, simulasi alarm, kuis, badge, peta misi)</label>
+                    <textarea name="G1" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>F2. Apa yang perlu diperbaiki atau ditambahkan dari modul ini?</label>
-                    <textarea name="F2" rows="3"></textarea>
+                    <label>G2. Apa yang perlu diperbaiki atau ditambahkan dari modul ini?</label>
+                    <textarea name="G2" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>F3. Adakah saran lain untuk membuat modul ini lebih baik?</label>
-                    <textarea name="F3" rows="3"></textarea>
+                    <label>G3. Adakah saran lain untuk membuat modul ini lebih baik?</label>
+                    <textarea name="G3" rows="3"></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit" id="btnSubmit">Kirim Kuesioner</button>
@@ -198,7 +209,7 @@
     <div class="modal">
         <div class="icon">&#10003;</div>
         <h3>Kuesioner Berhasil Dikirim!</h3>
-        <p>Terima kasih atas partisipasimu. Jawabanmu sangat membantu untuk meningkatkan kualitas modul pembelajaran ini.</p>
+        <p>Terima kasih atas partisipasimu. Jawabanmu sangat membantu untuk mengevaluasi dan meningkatkan kualitas modul pembelajaran ini.</p>
         <button class="btn-close" onclick="location.reload()">Kirim Lagi</button>
     </div>
 </div>
@@ -216,48 +227,50 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
     // ===== KONFIGURASI SUPABASE =====
-    // Ganti dengan credentials dari project Supabase kamu!
-    const SUPABASE_URL = '';
-    const SUPABASE_ANON_KEY = '';
+    const SUPABASE_URL = 'https://awzdscgaxngwefhgbmhy.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3emRzY2dheG5nd2VmaGdibWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MjgwOTMsImV4cCI6MjA5NzIwNDA5M30.Yx1p26R6KH4kY3ofD93RKlsvu9ZGc-S2YQPSbTkzKIg';
 
     let supabase = null;
     if (SUPABASE_URL && SUPABASE_ANON_KEY) {
         supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     }
 
-    // Data pertanyaan
+    // Data pertanyaan — 5 dimensi UAT
     const questions = {
-        B: [
-            'Modul pembelajaran ini berjalan dengan lancar tanpa error atau gangguan',
-            'Semua fitur dalam modul ini berfungsi dengan baik (klik kartu, drag, kuis, dsb.)',
-            'Saya dapat menyelesaikan setiap misi tanpa kebingungan teknis',
-            'Suara alarm pada Misi 2 berfungsi dengan baik dan jelas terdengar',
-            'Permainan kuis pada Misi 4 berjalan dengan baik dan waktu mundurnya berfungsi',
-            'Sistem XP, level, dan pencapaian (badge) berjalan sesuai harapan'
+        B: [ // System Quality
+            'Modul pembelajaran ini berjalan lancar tanpa error atau gangguan teknis yang berarti',
+            'Semua fitur interaktif (klik kartu, mencari bahaya di gambar, kuis, drag-and-drop) berfungsi dengan baik',
+            'Suara alarm pada Misi 2 terdengar jelas dan simulasi evakuasi berfungsi seperti yang diharapkan',
+            'Timer mundur pada kuis Misi 4 berfungsi dengan baik dan waktu yang diberikan cukup untuk menjawab',
+            'Sistem XP, level, dan badge (lencana) berjalan sesuai harapan dan memotivasi saya'
         ],
-        C: [
-            'Materi tentang penyebab kebakaran (Misi 1) mudah saya pahami',
-            'Petunjuk evakuasi dan simulasi alarm (Misi 2) jelas dan informatif',
-            'Materi tentang risiko listrik dan pengisian baterai (Misi 3) berguna dan mudah dimengerti',
-            'Pertanyaan kuis (Misi 4) sesuai dengan materi yang sudah dipelajari',
-            'Informasi yang disajikan akurat dan dapat dipercaya',
-            'Bahasa yang digunakan mudah dipahami oleh siswa SMP'
+        C: [ // Ease of Use
+            'Saya dapat dengan mudah memulai dan menyelesaikan setiap misi tanpa kesulitan',
+            'Saya tidak perlu bertanya pada orang lain untuk bisa menggunakan modul ini',
+            'Saya cepat terbiasa dan mahir dalam menggunakan modul pembelajaran ini',
+            'Petunjuk dan arahan dalam setiap misi jelas sehingga saya tahu apa yang harus dilakukan',
+            'Secara keseluruhan, modul ini mudah digunakan (user-friendly)'
         ],
-        D: [
-            'Tampilan modul ini menarik dan menyenangkan untuk dilihat',
-            'Saya dapat dengan mudah berpindah antar halaman dan misi',
-            'Peta misi (Mission Map) di halaman utama mudah dipahami',
-            'Tombol-tombol dan menu jelas sehingga saya tahu harus menekan apa',
-            'Gambar dan ilustrasi membantu saya memahami materi',
-            'Modul ini nyaman digunakan di HP maupun laptop'
+        D: [ // Information Quality
+            'Materi tentang penyebab kebakaran (Misi 1: segitiga api, kartu penyebab) mudah dipahami dan jelas',
+            'Simulasi alarm dan petunjuk evakuasi (Misi 2) memberikan informasi yang berguna tentang cara evakuasi yang aman',
+            'Materi tentang risiko listrik dan pengisian baterai (Misi 3) sangat berguna untuk kehidupan sehari-hari saya',
+            'Soal-soal kuis (Misi 4) sesuai dengan materi yang sudah dipelajari di Misi 1-3',
+            'Bahasa dan istilah yang digunakan mudah dimengerti oleh siswa SMP'
         ],
-        E: [
-            'Saya merasa senang menggunakan modul pembelajaran ini',
-            'Belajar tentang keselamatan kebakaran jadi lebih seru karena ada game, XP, dan badge',
-            'Saya lebih paham tentang cara mencegah kebakaran setelah menggunakan modul ini',
-            'Saya akan merekomendasikan modul ini ke teman-teman saya',
-            'Saya ingin belajar topik lain menggunakan modul online seperti ini',
-            'Secara keseluruhan, saya puas dengan modul pembelajaran ini'
+        E: [ // Interface Quality
+            'Tampilan modul ini menarik secara visual dan membuat saya ingin terus menggunakannya',
+            'Peta misi (Mission Map) di halaman utama mudah dipahami dan membantu saya melihat progres belajar',
+            'Gambar dan ilustrasi membantu saya memahami materi dengan lebih baik',
+            'Tombol-tombol dan menu jelas sehingga saya tahu apa yang harus saya tekan',
+            'Modul ini nyaman digunakan, baik di HP (smartphone) maupun di laptop/komputer'
+        ],
+        F: [ // Satisfaction & Acceptance
+            'Saya merasa senang dan termotivasi saat menggunakan modul pembelajaran ini',
+            'Elemen permainan (XP, badge, level, safety meter) membuat belajar keselamatan kebakaran jadi lebih seru dan menyenangkan',
+            'Setelah menggunakan modul ini, saya merasa lebih paham dan siap menghadapi situasi kebakaran di sekolah maupun di rumah',
+            'Saya akan merekomendasikan modul ini kepada teman-teman saya agar mereka juga belajar tentang keselamatan kebakaran',
+            'Secara keseluruhan, saya menerima dan puas dengan modul pembelajaran ini sebagai alat bantu belajar'
         ]
     };
 
@@ -266,6 +279,7 @@
     function renderQuestions() {
         Object.keys(questions).forEach(section => {
             const container = document.getElementById('section' + section);
+            if (!container) return;
             questions[section].forEach((q, idx) => {
                 const num = section + (idx + 1);
                 const div = document.createElement('div');
@@ -314,9 +328,9 @@
             kelas: formData.get('kelas'),
             jenis_kelamin: formData.get('jenis_kelamin'),
             pengalaman_simulasi: formData.get('pengalaman_simulasi'),
-            F1: formData.get('F1') || '',
-            F2: formData.get('F2') || '',
-            F3: formData.get('F3') || ''
+            G1: formData.get('G1') || '',
+            G2: formData.get('G2') || '',
+            G3: formData.get('G3') || ''
         };
 
         Object.keys(questions).forEach(section => {

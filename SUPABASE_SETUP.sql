@@ -6,8 +6,10 @@
 -- 2. Paste & Run
 -- ============================================================
 
--- Buat tabel uat_responses
-CREATE TABLE IF NOT EXISTS uat_responses (
+-- Buat tabel uat_responses (hapus dulu jika sudah ada versi lama)
+DROP TABLE IF EXISTS uat_responses;
+
+CREATE TABLE uat_responses (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     created_at TIMESTAMPTZ DEFAULT NOW(),
 
@@ -16,22 +18,25 @@ CREATE TABLE IF NOT EXISTS uat_responses (
     jenis_kelamin TEXT,
     pengalaman_simulasi TEXT,
 
-    -- Bagian B: System Quality (1-5)
-    B1 INT, B2 INT, B3 INT, B4 INT, B5 INT, B6 INT,
+    -- Bagian B: System Quality / Kualitas Sistem (1-5)
+    B1 INT, B2 INT, B3 INT, B4 INT, B5 INT,
 
-    -- Bagian C: Information Quality (1-5)
-    C1 INT, C2 INT, C3 INT, C4 INT, C5 INT, C6 INT,
+    -- Bagian C: Ease of Use / Kemudahan Penggunaan (1-5)
+    C1 INT, C2 INT, C3 INT, C4 INT, C5 INT,
 
-    -- Bagian D: Interface Quality (1-5)
-    D1 INT, D2 INT, D3 INT, D4 INT, D5 INT, D6 INT,
+    -- Bagian D: Information Quality / Kualitas Informasi (1-5)
+    D1 INT, D2 INT, D3 INT, D4 INT, D5 INT,
 
-    -- Bagian E: User Satisfaction (1-5)
-    E1 INT, E2 INT, E3 INT, E4 INT, E5 INT, E6 INT,
+    -- Bagian E: Interface Quality / Kualitas Antarmuka (1-5)
+    E1 INT, E2 INT, E3 INT, E4 INT, E5 INT,
 
-    -- Bagian F: Umpan Balik Terbuka
-    F1 TEXT,
-    F2 TEXT,
-    F3 TEXT
+    -- Bagian F: Satisfaction & Acceptance / Kepuasan & Penerimaan (1-5)
+    F1 INT, F2 INT, F3 INT, F4 INT, F5 INT,
+
+    -- Bagian G: Umpan Balik Terbuka
+    G1 TEXT,
+    G2 TEXT,
+    G3 TEXT
 );
 
 -- Aktifkan Row Level Security (boleh public insert)

@@ -68,9 +68,20 @@ Atau langsung dari Excel:
 |-------|------|-----------|
 | `id` | BIGINT | Primary key (auto increment) |
 | `created_at` | TIMESTAMPTZ | Waktu pengisian |
-| `kelas`, `jenis_kelamin`, `pengalaman_simulasi` | TEXT | Data responden |
-| `B1`–`B6` | INT | Kualitas Sistem (1-5) |
-| `C1`–`C6` | INT | Kualitas Informasi (1-5) |
-| `D1`–`D6` | INT | Kualitas Antarmuka (1-5) |
-| `E1`–`E6` | INT | Kepuasan Pengguna (1-5) |
-| `F1`, `F2`, `F3` | TEXT | Umpan balik terbuka |
+| `kelas`, `jenis_kelamin`, `pengalaman_simulasi` | TEXT | Data responden (Bagian A) |
+| `B1`–`B5` | INT | Kualitas Sistem / System Quality (1-5) |
+| `C1`–`C5` | INT | Kemudahan Penggunaan / Ease of Use (1-5) |
+| `D1`–`D5` | INT | Kualitas Informasi / Information Quality (1-5) |
+| `E1`–`E5` | INT | Kualitas Antarmuka / Interface Quality (1-5) |
+| `F1`–`F5` | INT | Kepuasan & Penerimaan / Satisfaction & Acceptance (1-5) |
+| `G1`, `G2`, `G3` | TEXT | Umpan balik terbuka (Bagian G) |
+
+## Dimensi UAT
+
+| Dimensi | Kode | Jumlah | Fokus Pengukuran |
+|---------|------|--------|------------------|
+| System Quality | B1-B5 | 5 | Kualitas teknis, fungsionalitas, performa sistem |
+| Ease of Use | C1-C5 | 5 | Kemudahan penggunaan, effort expectancy |
+| Information Quality | D1-D5 | 5 | Kualitas, kejelasan, kegunaan materi |
+| Interface Quality | E1-E5 | 5 | Desain, navigasi, estetika visual |
+| Satisfaction & Acceptance | F1-F5 | 5 | Kepuasan, penerimaan, niat penggunaan |
