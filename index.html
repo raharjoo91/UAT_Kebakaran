@@ -418,20 +418,10 @@
 </div>
 
 <script>
-    // ===== KONFIGURASI SUPABASE =====
+    // ===== KONFIGURASI SUPABASE (REST API langsung — tanpa CDN) =====
     var SUPABASE_URL = 'https://awzdscgaxngwefhgbmhy.supabase.co';
     var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3emRzY2dheG5nd2VmaGdibWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE2MjgwOTMsImV4cCI6MjA5NzIwNDA5M30.Yx1p26R6KH4kY3ofD93RKlsvu9ZGc-S2YQPSbTkzKIg';
-
-    // Load Supabase CDN
-    function initSupabase() {
-        var s = document.createElement('script');
-        s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
-        s.onload = function() { window._supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); };
-        document.head.appendChild(s);
-    }
-    initSupabase();
-
-    function getSupabase() { return window._supabase; }
+    var SUPABASE_TABLE = 'uat_responses';
 
     // Radio toggle visual
     document.querySelectorAll('.radio-group').forEach(function(group) {
@@ -448,12 +438,6 @@
     // Form submit
     document.getElementById('uatForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-
-        var supabase = getSupabase();
-        if (!supabase) {
-            showAlert('error', 'Supabase sedang dimuat. Tunggu beberapa detik dan coba lagi.');
-            return;
-        }
 
         var formData = new FormData(this);
         var data = {
@@ -472,7 +456,7 @@
         var required = ['B1','B2','B3','B4','B5','C1','C2','C3','C4','C5','D1','D2','D3','D4','D5','E1','E2','E3','E4','E5','F1','F2','F3','F4','F5'];
         var missing = required.filter(function(k) { return !data[k] || isNaN(data[k]); });
         if (missing.length > 0) {
-            showAlert('error', 'Mohon jawab semua pertanyaan (belum: ' + missing.join(', ') + ')');
+            showAlert('error', 'Mohon jawab semua pertanyaan');
             return;
         }
 
@@ -480,8 +464,19 @@
         document.getElementById('btnSubmit').disabled = true;
 
         try {
-            var result = await supabase.from('uat_responses').insert([data]);
-            if (result.error) throw result.error;
+            var res = await fetch(SUPABASE_URL + '/rest/v1/' + SUPABASE_TABLE, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+                },
+                body: JSON.stringify(data)
+            });
+            if (!res.ok) {
+                var errBody = await res.text();
+                throw new Error(errBody);
+            }
             document.getElementById('loadingModal').classList.remove('show');
             document.getElementById('successModal').classList.add('show');
         } catch (err) {
